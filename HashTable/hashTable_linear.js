@@ -21,10 +21,6 @@ HashTable.prototype = {
         if (count < 0) count += this.table.length - 1
         return parseInt(count)
     },
-    //开链法
-    buildChains: function() {
-        for (let i = 0, il = this.table.length; i < il; ++i) this.table[i] = []
-    },
     put: function(data) {
         let pos = this.betterHash(data)
         if (this.table[pos] === undefined) {
@@ -39,9 +35,7 @@ HashTable.prototype = {
     get: function(data) {
         let pos = this.betterHash(data)
         for (let i = pos, il = this.values.length; i < il; ++i) {
-            if (this.values[i] === data) {
-                return this.values[i]
-            }
+            if (this.values[i] === data) return this.values[i]
         }
         return undefined
     },
@@ -53,7 +47,6 @@ HashTable.prototype = {
 
 }
 let table = new HashTable()
-table.buildChains()
 let names = ["David", "Jennifer", "Donnie", "Raymond",
     "Cynthia", "Mike", "Clayton", "Danny", "Jonathan"
 ];

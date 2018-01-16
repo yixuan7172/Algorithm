@@ -20,7 +20,6 @@ HashTable.prototype = {
         if (count < 0) count += this.table.length - 1
         return parseInt(count)
     },
-    //开链法
     buildChains: function() {
         for (let i = 0, il = this.table.length; i < il; ++i) this.table[i] = []
     },
