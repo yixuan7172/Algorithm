@@ -42,7 +42,6 @@ HashTable.prototype = {
             while (this.table[pos][index] !== data && this.table[pos][index] !== undefined) ++index
             return this.table[pos][index]
         }
-        return undefined
     },
     show: function() {
         for (let i = 0; i < this.table.length; i++) {
