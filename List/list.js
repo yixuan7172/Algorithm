@@ -6,60 +6,47 @@ function Node(element) {
 
 function List() {
     this.head = new Node('head')
-    this.find = find
-    this.insert = insert
-    this.remove = remove
-    this.display = display
-    this.findLast = findLast
-    this.reverseDisplay = reverseDisplay
 }
-
-function find(item) {
-    let currNode = this.head
-    while (currNode.next !== null && currNode.element !== item) {
-        currNode = currNode.next
+List.prototype = {
+    constructor: List,
+    find: function(item) {
+        let currNode = this.head
+        while (currNode.next !== null && currNode.element !== item) currNode = currNode.next
+        return currNode
+    },
+    insert: function(newElement, item) {
+        let newNode = new Node(newElement),
+            currNode = this.find(item)
+        newNode.next = currNode.next
+        newNode.previous = currNode
+        currNode.next = newNode
+    },
+    display: function() {
+        let currNode = this.head
+        while (currNode.next !== null) {
+            currNode = currNode.next
+            console.log(currNode.element)
+        }
+    },
+    remove: function(item) {
+        let currNode = this.find(item)
+        currNode.previous.next = currNode.next
+        currNode.next.previous = currNode.previous
+        currNode.next = null
+        currNode.previous = null
+    },
+    reverseDisplay: function() {
+        let currNode = this.findLast()
+        while (currNode.previous !== null) {
+            console.log(currNode.element)
+            currNode = currNode.previous
+        }
+    },
+    findLast: function() {
+        let currNode = this.head
+        while (currNode.next !== null) currNode = currNode.next
+        return currNode
     }
-    return currNode
-}
-
-function insert(newElement, item) {
-    let newNode = new Node(newElement),
-        currNode = this.find(item)
-    newNode.next = currNode.next
-    newNode.previous = currNode
-    currNode.next = newNode
-}
-
-function display() {
-    let currNode = this.head
-    while (currNode.next !== null) {
-        currNode = currNode.next
-        console.log(currNode.element)
-    }
-}
-
-function remove(item) {
-    let currNode = this.find(item)
-    currNode.previous.next = currNode.next
-    currNode.next.previous = currNode.previous
-    currNode.next = null
-    currNode.previous = null
-}
-
-function reverseDisplay() {
-    let currNode = this.findLast()
-    while (currNode.previous !== null) {
-        console.log(currNode.element)
-        currNode = currNode.previous
-    }
-}
-
-function findLast() {
-    let currNode = this.head
-    while (currNode.next !== null) {
-        currNode = currNode.next
-    }
-    return currNode
 }
 let test = new List()
 test.insert('a', 'head')
