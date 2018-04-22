@@ -7,10 +7,9 @@ class Observer {
         this.messages[eventName] = this.messages[eventName] || []
         this.messages[eventName].push(fn)
     }
-    fire(eventName) {
+    fire(eventName, ...args) {
         let events = this.messages[eventName]
         if (!events) return
-        let args = [].slice.call(arguments, 1)
         events.forEach(fn => fn.apply(this, args))
     }
     off(eventName = null, fn = null) {
