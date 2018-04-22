@@ -28,8 +28,7 @@ class Observer {
     }
     once(eventName, fn) {
         const self = this
-        let func = function() {
-            let args = Array.from(arguments)
+        let func = function(...args) {
             fn.apply(self, args)
             self.off(eventName, func)
         }
