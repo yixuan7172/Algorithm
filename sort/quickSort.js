@@ -75,8 +75,8 @@ function generateArr(len) {
 generateArr(10000000);
 console.time('xm');
 quickSort2(arr);
-console.timeEnd('xm'); // xm: 5254.090ms
+console.timeEnd('xm');
 
 console.time('ryf');
 quickSort(arr);
-console.timeEnd('ryf'); // ryf: 10071.621ms
+console.timeEnd('ryf');
