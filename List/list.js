@@ -12,7 +12,8 @@ List.prototype = {
     find: function(item) {
         let currNode = this.head
         while (currNode.next !== null && currNode.element !== item) currNode = currNode.next
-        return currNode
+        if (currNode.element === item) return currNode
+        else throw '找不到'
     },
     insert: function(newElement, item) {
         let newNode = new Node(newElement),
@@ -59,3 +60,4 @@ test.remove('b')
 test.display()
 console.log('-------------')
 test.reverseDisplay()
+console.log(test.find('eaaaa'));
