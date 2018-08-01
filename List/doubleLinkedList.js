@@ -101,6 +101,6 @@ list.insert('aaa')
 list.insert('aaaa')
 list.insert('aaaaa')
 list.display()
-list.removeAt(0)
-console.log('--------------');
+list.remove('aaaa')
+console.log('--------------')
 list.display()
