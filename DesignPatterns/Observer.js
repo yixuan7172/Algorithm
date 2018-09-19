@@ -16,7 +16,10 @@ class Observer {
         if (eventName && fn) {
             //退订此事件函数
             if (this.messages[eventName] && this.messages[eventName].length) {
-                this.messages[eventName] = this.messages[eventName].filter(val => val !== fn)
+                let array = this.message[eventName]
+                for (let i = 0, l = array.length; i < l; ++i) {
+                    if (array[i] === fn) array.splice(i, 1)
+                }
             }
         } else if (eventName) {
             //退订此事件的所有函数
